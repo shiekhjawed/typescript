@@ -25,3 +25,42 @@ let degreeHolding: any = "BS Computer Science";
 
 // 7. null
 let value: null = null;
+// Declaring an object with explicit inline types
+let obj: {
+    name: string;
+    age: number;
+    class: string;
+} = {
+    name: "john",
+    age: 23,
+    class: "a"
+};
+
+// Testing the output
+console.log(obj);
+// Define the interface
+interface User {
+    name: string;
+    age: number;
+    class: string;
+    intelligent?: string; // The '?' makes this property optional
+}
+
+// Student 1: Does not include the optional 'intelligent' property
+const student1: User = {
+    name: "sana",
+    age: 23,
+    class: "A"
+};
+
+// Student 2: Includes the optional 'intelligent' property
+const student2: User = {
+    name: "sana",
+    age: 23,
+    class: "A",
+    intelligent: "yes"
+};
+
+// Testing the output
+console.log(student1);
+console.log(student2);

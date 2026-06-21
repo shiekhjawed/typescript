@@ -21,3 +21,27 @@ let marks = 500;
 let degreeHolding = "BS Computer Science";
 // 7. null
 let value = null;
+// Declaring an object with explicit inline types
+let obj = {
+    name: "john",
+    age: 23,
+    class: "a"
+};
+// Testing the output
+console.log(obj);
+// Student 1: Does not include the optional 'intelligent' property
+const student1 = {
+    name: "sana",
+    age: 23,
+    class: "A"
+};
+// Student 2: Includes the optional 'intelligent' property
+const student2 = {
+    name: "sana",
+    age: 23,
+    class: "A",
+    intelligent: "yes"
+};
+// Testing the output
+console.log(student1);
+console.log(student2);
