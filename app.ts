@@ -1,66 +1,50 @@
-// 1. string
-let name: string = "Shiekh Amber jawed";
-// 2. number
-let sellerPrice: number = 1000;
-// 3. boolean (different example)
-let isRaining: boolean = true;
+// ==========================================
+// CLASS
+// ==========================================
 
-// 4. object
-let user: object = {
-  name: "Shiekh Amber jawed",
-  city: "Karachi",
-  education: "Bachelor of Engineering"
-};
-
-// 5. array (colors example)
-let colors: string[] = ["Red", "Green", "Blue", "Yellow"];
-
-// 6. any
-let student: any = "Ahmed";
-let age: any = 22;
-let marks: any = 500;
-let degreeHolding: any = "BS Computer Science";
-
-
-
-// 7. null
-let value: null = null;
-// Declaring an object with explicit inline types
-let obj: {
+class Student {
     name: string;
     age: number;
-    class: string;
-} = {
-    name: "john",
-    age: 23,
-    class: "a"
-};
 
-// Testing the output
-console.log(obj);
-// Define the interface
-interface User {
-    name: string;
-    age: number;
-    class: string;
-    intelligent?: string; // The '?' makes this property optional
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+
+    displayInfo() {
+        console.log("Name: " + this.name);
+        console.log("Age: " + this.age);
+    }
 }
 
-// Student 1: Does not include the optional 'intelligent' property
-const student1: User = {
-    name: "sana",
-    age: 23,
-    class: "A"
-};
+let student1 = new Student("Amber", 20);
+student1.displayInfo();
 
-// Student 2: Includes the optional 'intelligent' property
-const student2: User = {
-    name: "sana",
-    age: 23,
-    class: "A",
-    intelligent: "yes"
-};
 
-// Testing the output
-console.log(student1);
-console.log(student2);
+// ==========================================
+// GENERIC FUNCTION
+// ==========================================
+
+function getData<T>(value: T): T {
+    return value;
+}
+
+let studentName = getData<string>("Amber");
+console.log(studentName);
+
+
+// ==========================================
+// ENUM
+// ==========================================
+
+enum UserRole {
+    Admin,
+    Teacher,
+    Student
+}
+
+let currentUser = UserRole.Admin;
+
+if (currentUser === UserRole.Admin) {
+    console.log("Welcome Admin");
+}
