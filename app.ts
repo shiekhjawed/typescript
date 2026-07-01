@@ -1,89 +1,163 @@
-// ==========================================
-// 1. TYPE ALIASES (Basic Object Types) type ka use custom data types banane ke liye hota hai
-// ==========================================
-type student = {
+
+// TypeScript Assignment
+// =========================
+
+// 1. String
+let name: string = "Shiekh Amber Jawed";
+console.log("Name:", name);
+
+// 2. Number
+let sellerPrice: number = 1000;
+console.log("Seller Price:", sellerPrice);
+
+// 3. Boolean
+let isRaining: boolean = true;
+console.log("Is Raining:", isRaining);
+
+// 4. Object
+let user: object = {
+    name: "Shiekh Amber Jawed",
+    city: "Karachi",
+    education: "Bachelor of Engineering"
+};
+console.log("User:", user);
+
+// 5. Array
+let colors: string[] = ["Red", "Green", "Blue", "Yellow"];
+console.log("Colors:", colors);
+
+// 6. Any
+let student: any = "Ahmed";
+let age: any = 22;
+let marks: any = 500;
+let degreeHolding: any = "BS Computer Science";
+
+console.log(student, age, marks, degreeHolding);
+
+// 7. Null
+let value: null = null;
+console.log("Null Value:", value);
+
+// 8. Union Type
+let id: string | number;
+
+id = 101;
+console.log("ID:", id);
+
+id = "TS101";
+console.log("ID:", id);
+
+// 9. Tuple
+let employee: [number, string, string] = [1, "Ali", "Developer"];
+console.log("Employee:", employee);
+
+// =========================
+// Typed Object
+// =========================
+
+let obj: {
     name: string;
     age: number;
-    grade: string;
+    class: string;
+} = {
+    name: "John",
+    age: 23,
+    class: "A"
 };
 
-let student1: student = {
-    name: "Ali",
-    age: 20,
-    grade: "A"
-};
+console.log("Object:", obj);
 
+// =========================
+// Interface with Optional Property
+// =========================
 
-
-// ==========================================
-// 2. INTERFACES  classes and object ke liye use hota hai
-// ==========================================
-interface Employee {
+interface User {
     name: string;
-    salary: number;
-    department: string;
+    age: number;
+    class: string;
+    intelligent?: string; // Optional Property
 }
 
-let emp1: Employee = {
-    name: "Fatima",
-    salary: 50000,
-    department: "IT"
+// Without optional property
+const student1: User = {
+    name: "Sana",
+    age: 23,
+    class: "A"
 };
 
-console.log(emp1);
-
-
-// ==========================================
-// 3. UNION TYPES (Allowing multiple types using '|')  ya toh ya to number hoga ya string hoga
-// ==========================================
-let studentId: number | string;
-
-studentId = 101;
-console.log(studentId);
-
-studentId = "STD101";
-console.log(studentId);
-
-
-// ==========================================
-// 4. INTERSECTION TYPES (Combining types using '&') one person multiple roles
-// ==========================================
-type Teacher = {
-    subject: string;
+// With optional property
+const student2: User = {
+    name: "Sana",
+    age: 23,
+    class: "A",
+    intelligent: "Yes"
 };
 
-type Programmer = {
-    language: string;
-};
+console.log("Student 1:", student1);
+console.log("Student 2:", student2);
 
-type Designer = {
-    designTool: string;
-};
+// =========================
+// Function Using Interface
+// =========================
 
-type TeacherProgrammer = Teacher & Programmer & Designer;
+function displayUser(user: User): void {
+    console.log(`Name: ${user.name}`);
+    console.log(`Age: ${user.age}`);
+    console.log(`Class: ${user.class}`);
 
-let person: TeacherProgrammer = {
-    subject: "Math",
-    language: "TypeScript",
-    designTool: "Figma"
-};
+    if (user.intelligent) {
+        console.log(`Intelligent: ${user.intelligent}`);
+    }
+}
 
-console.log(person);
+displayUser(student1);
+displayUser(student2);
+// CLASS
+// ==========================================
+
+class Student {
+    name: string;
+    age: number;
+
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+
+    displayInfo() {
+        console.log("Name: " + this.name);
+        console.log("Age: " + this.age);
+    }
+}
+
+let student1 = new Student("Ali", 20);
+student1.displayInfo();
 
 
 // ==========================================
-// 5. DECORATORS  ak function hota hai jo class, method, property key behaviour ko modify karne ke liye use hota hai
+// GENERIC FUNCTION
 // ==========================================
-// Note: To run this section without errors, make sure 
-// "experimentalDecorators": true is enabled in your tsconfig.json file.
 
-// function Logger(constructor: Function) {
-//     console.log("Class Created");
-// }
+function getData<T>(value: T): T {
+    return value;
+}
 
-// @Logger
-// class Student {
-//     name = "Fatima";
-// }
+let studentName = getData<string>("Shiekh Amber Jawed");
+console.log(studentName);
 
-// const s1 = new Student();
+
+
+// ENUM
+// ==========================================
+
+enum UserRole {
+    Admin,
+    Teacher,
+    Student
+}
+
+let currentUser = UserRole.Admin;
+
+if (currentUser === UserRole.Admin) {
+    console.log("Welcome Admin");
+}
