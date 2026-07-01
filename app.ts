@@ -1,50 +1,89 @@
 // ==========================================
-// CLASS
+// 1. TYPE ALIASES (Basic Object Types) type ka use custom data types banane ke liye hota hai
 // ==========================================
-
-class Student {
+type student = {
     name: string;
     age: number;
+    grade: string;
+};
 
-    constructor(name: string, age: number) {
-        this.name = name;
-        this.age = age;
-    }
+let student1: student = {
+    name: "Ali",
+    age: 20,
+    grade: "A"
+};
 
-    displayInfo() {
-        console.log("Name: " + this.name);
-        console.log("Age: " + this.age);
-    }
-}
-
-let student1 = new Student("Amber", 20);
-student1.displayInfo();
 
 
 // ==========================================
-// GENERIC FUNCTION
+// 2. INTERFACES  classes and object ke liye use hota hai
 // ==========================================
-
-function getData<T>(value: T): T {
-    return value;
+interface Employee {
+    name: string;
+    salary: number;
+    department: string;
 }
 
-let studentName = getData<string>("Amber");
-console.log(studentName);
+let emp1: Employee = {
+    name: "Fatima",
+    salary: 50000,
+    department: "IT"
+};
+
+console.log(emp1);
 
 
 // ==========================================
-// ENUM
+// 3. UNION TYPES (Allowing multiple types using '|')  ya toh ya to number hoga ya string hoga
 // ==========================================
+let studentId: number | string;
 
-enum UserRole {
-    Admin,
-    Teacher,
-    Student
-}
+studentId = 101;
+console.log(studentId);
 
-let currentUser = UserRole.Admin;
+studentId = "STD101";
+console.log(studentId);
 
-if (currentUser === UserRole.Admin) {
-    console.log("Welcome Admin");
-}
+
+// ==========================================
+// 4. INTERSECTION TYPES (Combining types using '&') one person multiple roles
+// ==========================================
+type Teacher = {
+    subject: string;
+};
+
+type Programmer = {
+    language: string;
+};
+
+type Designer = {
+    designTool: string;
+};
+
+type TeacherProgrammer = Teacher & Programmer & Designer;
+
+let person: TeacherProgrammer = {
+    subject: "Math",
+    language: "TypeScript",
+    designTool: "Figma"
+};
+
+console.log(person);
+
+
+// ==========================================
+// 5. DECORATORS  ak function hota hai jo class, method, property key behaviour ko modify karne ke liye use hota hai
+// ==========================================
+// Note: To run this section without errors, make sure 
+// "experimentalDecorators": true is enabled in your tsconfig.json file.
+
+// function Logger(constructor: Function) {
+//     console.log("Class Created");
+// }
+
+// @Logger
+// class Student {
+//     name = "Fatima";
+// }
+
+// const s1 = new Student();

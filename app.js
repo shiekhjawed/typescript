@@ -1,40 +1,40 @@
 "use strict";
-// ==========================================
-// CLASS
-// ==========================================
 Object.defineProperty(exports, "__esModule", { value: true });
-class Student {
-    name;
-    age;
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    displayInfo() {
-        console.log("Name: " + this.name);
-        console.log("Age: " + this.age);
-    }
-}
-let student1 = new Student("Amber", 20);
-student1.displayInfo();
+let student1 = {
+    name: "Ali",
+    age: 20,
+    grade: "A"
+};
+let emp1 = {
+    name: "Fatima",
+    salary: 50000,
+    department: "IT"
+};
+console.log(emp1);
 // ==========================================
-// GENERIC FUNCTION
+// 3. UNION TYPES (Allowing multiple types using '|') 
 // ==========================================
-function getData(value) {
-    return value;
-}
-let studentName = getData("Amber");
-console.log(studentName);
+let studentId;
+studentId = 101;
+console.log(studentId);
+studentId = "STD101";
+console.log(studentId);
+let person = {
+    subject: "Math",
+    language: "TypeScript",
+    designTool: "Figma"
+};
+console.log(person);
 // ==========================================
-// ENUM
+// 5. DECORATORS 
 // ==========================================
-var UserRole;
-(function (UserRole) {
-    UserRole[UserRole["Admin"] = 0] = "Admin";
-    UserRole[UserRole["Teacher"] = 1] = "Teacher";
-    UserRole[UserRole["Student"] = 2] = "Student";
-})(UserRole || (UserRole = {}));
-let currentUser = UserRole.Admin;
-if (currentUser === UserRole.Admin) {
-    console.log("Welcome Admin");
-}
+// Note: To run this section without errors, make sure 
+// "experimentalDecorators": true is enabled in your tsconfig.json file.
+// function Logger(constructor: Function) {
+//     console.log("Class Created");
+// }
+// @Logger
+// class Student {
+//     name = "Fatima";
+// }
+// const s1 = new Student();
