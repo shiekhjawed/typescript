@@ -161,3 +161,85 @@ let currentUser = UserRole.Admin;
 if (currentUser === UserRole.Admin) {
     console.log("Welcome Admin");
 }
+// ==========================================
+// TOPIC 1: Type Aliases (Custom Types)
+// ==========================================
+type student = {
+    name: string;
+    age: number;
+    grade: string;
+};
+
+let student1: student = {
+    name: "Ali",
+    age: 20,
+    grade: "A"
+};
+
+
+// ==========================================
+// TOPIC 2: Interfaces
+// ==========================================
+interface Employee {
+    name: string;
+    salary: number;
+    department: string;
+}
+
+let emp1: Employee = {
+    name: "Fatima",
+    salary: 50000,
+    department: "IT"
+};
+
+console.log(emp1);
+
+
+// ==========================================
+// TOPIC 3: Union Types
+// ==========================================
+let studentId: number | string;
+
+studentId = 101;
+console.log(studentId);
+
+studentId = "STD101";
+console.log(studentId);
+
+
+// ==========================================
+// TOPIC 4: Intersection Types
+// ==========================================
+type Teacher = {
+    subject: string;
+};
+
+type Programmer = {
+    language: string;
+};
+
+type TeacherProgrammer = Teacher & Programmer;
+
+let person: TeacherProgrammer = {
+    subject: "Math",
+    language: "TypeScript"
+};
+
+console.log(person);
+
+
+// ==========================================
+// TOPIC 5: Decorators
+// Note: To run this, make sure "experimentalDecorators" 
+// is enabled in your tsconfig.json file.
+// ==========================================
+function Logger(constructor: Function) {
+    console.log("Class Created");
+}
+
+@Logger
+class Student {
+    name = "Fatima";
+}
+
+const s1 = new Student();
